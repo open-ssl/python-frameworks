@@ -1,0 +1,83 @@
+version: '3'
+
+services:
+  fastapi:
+    build: samples/fastapi_framework
+    container_name: fastapi_framework
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    networks:
+      - frameworks-network
+
+  django:
+    build: samples/django_framework
+    container_name: django_framework
+    restart: unless-stopped
+    environment:
+      - PORT=3001
+    ports:
+      - "3001:3001"
+    networks:
+      - frameworks-network
+
+  flask:
+    build: samples/flask_framework
+    container_name: flask_framework
+    restart: unless-stopped
+    environment:
+      - PORT=3002
+    ports:
+      - "3002:3002"
+    networks:
+      - frameworks-network
+
+  aiohttp:
+    build: samples/aiohttp_framework
+    container_name: aiohttp_framework
+    restart: unless-stopped
+    environment:
+      - PORT=3003
+    ports:
+      - "3003:3003"
+    networks:
+      - frameworks-network
+
+  tornado:
+    build: samples/tornado_framework
+    container_name: tornado_framework
+    restart: unless-stopped
+    environment:
+      - PORT=3004
+    ports:
+      - "3004:3004"
+    networks:
+      - frameworks-network
+
+  pyramid:
+    build: samples/pyramid_framework
+    container_name: pyramid_framework
+    restart: unless-stopped
+    environment:
+      - PORT=3005
+    ports:
+      - "3005:3005"
+    networks:
+      - frameworks-network
+
+  cherrypy:
+    build: samples/cherrypy_framework
+    container_name: cherrypy_framework
+    restart: unless-stopped
+    environment:
+      - PORT=3006
+    ports:
+      - "3006:3006"
+    networks:
+      - frameworks-network
+
+networks:
+  frameworks-network:
+    driver: bridge
